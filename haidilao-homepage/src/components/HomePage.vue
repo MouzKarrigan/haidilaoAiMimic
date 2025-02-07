@@ -1,14 +1,39 @@
 <template>
-  <div>
-<HeaderComponent />
-<VideoHero />
-<el-main>
-  <CarouselSection />
-  <ServiceFeatures />
-  <h2>{{ aboutData.title }}</h2>
-  <p>{{ aboutData.description }}</p>
-  <AppDownloadCTA />
-</el-main>
+  <div class="home-container">
+    <HeaderComponent />
+    <VideoHero />
+    <el-main>
+
+      <!-- Brand Story Section -->
+      <section class="section brand-story">
+        <h2 class="section-title">品牌故事</h2>
+        <div class="brand-story-content">
+          <div class="story-text">
+            <h3>{{ aboutData.title }}</h3>
+            <p>{{ aboutData.description }}</p>
+          </div>
+          <div class="story-image">
+            <img src="../assets/haidilao_files/692d4547ab3b45b19006c05acd1d7c47-750-390.png" alt="海底捞品牌故事" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Carousel Section -->
+      <section class="section carousel">
+        <CarouselSection />
+      </section>
+
+      <!-- Service Features with New Design -->
+      <section class="section features">
+        <h2 class="section-title">特色服务</h2>
+        <ServiceFeatures />
+      </section>
+
+      <!-- App Download Section
+      <section class="section app-download">
+        <AppDownloadCTA />
+      </section> -->
+    </el-main>
     <FooterSection />
   </div>
 </template>
@@ -49,26 +74,64 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-  background-color: #f56c6c;
-  color: white;
+.home-container {
+  background-color: var(--background-primary);
 }
 
-h2 {
-  margin-top: 20px;
-  color: #333;
+.brand-story-content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-top: 30px;
+  animation: slideUp 0.8s ease-out;
 }
 
-p {
-  color: #666;
+.story-text {
+  flex: 1;
 }
 
-el-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #f2f2f2;
+.story-text h3 {
+  color: var(--haidilao-red);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.story-text p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.story-image {
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.story-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .brand-story-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .story-text, .story-image {
+    width: 100%;
+  }
+}
+
+.features, .carousel, .app-download {
+  margin-top: 60px;
 }
 </style>
